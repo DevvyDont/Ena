@@ -1,0 +1,23 @@
+name: Ena
+version: @version@
+main: sh.niall.ena.Ena
+api-version: 1.16
+depend: [Vault]
+commands:
+  chatcolor:
+    description: Set your chat color!
+    usage: /<command>
+    permission: ena.chatcolor
+    aliases: [chatcolour]
+  spawn:
+    description: Telports you to the current worlds spawn point.
+    usage: /<command>
+    permission: ena.spawn.tp
+  setspawn:
+    description: Sets the current worlds spawn point to your current location.
+    usage: /<command>
+    permission: ena.spawn.set
+  stats:
+    description: Displays stats about the target player.
+    usage: /<command>
+    permission: ena.player.stats
