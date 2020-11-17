@@ -5,6 +5,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class HumanUtils {
+
+    /**
+     * Converts seconds into a more human readable format.
+     * 90 seconds becomes 1 minute, 30 seconds.
+     * @param duration The duration to convert.
+     * @return The human readable conversion.
+     */
     public static String secondsToHumanReadable(long duration) {
         int day = (int) TimeUnit.SECONDS.toDays(duration);
         long hours = TimeUnit.SECONDS.toHours(duration) - (day *24);

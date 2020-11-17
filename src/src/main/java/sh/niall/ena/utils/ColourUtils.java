@@ -9,6 +9,11 @@ public class ColourUtils {
 
     private static final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
 
+    /**
+     * Formats a string to enable colour codes in Minecraft messages.
+     * @param message The string to format.
+     * @return The Minecraft formatted string.
+     */
     public static String formatString(String message) {
         Matcher matcher = pattern.matcher(message);
         while (matcher.find()) {
