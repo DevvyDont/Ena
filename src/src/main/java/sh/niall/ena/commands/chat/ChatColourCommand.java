@@ -68,7 +68,7 @@ public class ChatColourCommand implements CommandExecutor, Listener {
         event.setCancelled(true);
         Material material = event.getCurrentItem().getType();
         ChatColour chatColour = ChatColour.getFromMaterial(material);
-        if (chatColour == null)
+        if (chatColour == null && material != Material.BARRIER)
             return;
 
         Player player = (Player) event.getWhoClicked();
