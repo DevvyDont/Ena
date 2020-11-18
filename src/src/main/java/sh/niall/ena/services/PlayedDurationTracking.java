@@ -2,7 +2,7 @@ package sh.niall.ena.services;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import sh.niall.ena.utils.StorageUtils;
@@ -13,7 +13,7 @@ import java.time.Instant;
 public class PlayedDurationTracking implements Listener {
 
     @EventHandler
-    public void OnPlayerLogin(PlayerLoginEvent event) {
+    public void OnPlayerLogin(PlayerJoinEvent event) {
         PersistentDataContainer playerData = event.getPlayer().getPersistentDataContainer();
         StorageUtils.setLong(playerData, StorageUtils.playerLoginTs, Instant.now().getEpochSecond());
     }
