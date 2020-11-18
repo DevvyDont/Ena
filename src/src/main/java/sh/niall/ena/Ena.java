@@ -3,7 +3,6 @@ package sh.niall.ena;
 import org.bukkit.plugin.java.JavaPlugin;
 import sh.niall.ena.commands.chat.ChatColourCommand;
 import sh.niall.ena.commands.player.StatsCommand;
-import sh.niall.ena.commands.spawn.SetSpawnCommand;
 import sh.niall.ena.commands.spawn.SpawnCommand;
 import sh.niall.ena.services.ChatFormatter;
 import sh.niall.ena.services.PlayedDurationTracking;
@@ -25,7 +24,6 @@ public final class Ena extends JavaPlugin {
         getCommand("chatcolor").setExecutor(new ChatColourCommand());
         getCommand("stats").setExecutor(new StatsCommand());
         getCommand("spawn").setExecutor(new SpawnCommand());
-        getCommand("setspawn").setExecutor(new SetSpawnCommand());
     }
 
     @Override
