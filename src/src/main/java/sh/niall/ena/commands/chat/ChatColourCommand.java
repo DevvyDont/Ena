@@ -3,7 +3,6 @@ package sh.niall.ena.commands.chat;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,17 +13,17 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
-import sh.niall.ena.Ena;
 import sh.niall.ena.chat.ChatColour;
 import sh.niall.ena.utils.ColourUtils;
 import sh.niall.ena.utils.StorageUtils;
+import sh.niall.miya.services.MiyaCommand;
 
-public class ChatColourCommand implements CommandExecutor, Listener {
+public class ChatColourCommand extends MiyaCommand implements Listener {
 
     private Inventory inventory;
 
     public ChatColourCommand() {
-        Ena.getPlugin().getServer().getPluginManager().registerEvents(this, Ena.getPlugin());
+        commandName = "chatcolor";
         createInventory();
     }
 

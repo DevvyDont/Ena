@@ -7,8 +7,9 @@ import sh.niall.ena.commands.spawn.SpawnCommand;
 import sh.niall.ena.services.ChatFormatter;
 import sh.niall.ena.services.PlayedDurationTracking;
 import sh.niall.ena.services.PlayerDeathTracking;
+import sh.niall.miya.MiyaPlugin;
 
-public final class Ena extends JavaPlugin {
+public final class Ena extends MiyaPlugin {
 
     private static Ena plugin;
 
@@ -16,14 +17,14 @@ public final class Ena extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
-        getServer().getPluginManager().registerEvents(new ChatFormatter(), this);
-        getServer().getPluginManager().registerEvents(new PlayedDurationTracking(), this);
-        getServer().getPluginManager().registerEvents(new PlayerDeathTracking(), this);
+        addService(new ChatFormatter());
+        addService(new PlayedDurationTracking());
+        addService(new PlayerDeathTracking());
 
         // Commands
-        getCommand("chatcolor").setExecutor(new ChatColourCommand());
-        getCommand("stats").setExecutor(new StatsCommand());
-        getCommand("spawn").setExecutor(new SpawnCommand());
+        addService(new ChatColourCommand());
+        addService(new StatsCommand());
+        addService(new SpawnCommand());
     }
 
     @Override

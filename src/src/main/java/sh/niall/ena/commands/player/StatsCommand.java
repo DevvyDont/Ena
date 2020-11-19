@@ -1,9 +1,6 @@
 package sh.niall.ena.commands.player;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -11,8 +8,9 @@ import sh.niall.ena.utils.ColourUtils;
 import sh.niall.ena.utils.HumanUtils;
 import sh.niall.ena.utils.StorageUtils;
 import sh.niall.ena.utils.TimeUtils;
+import sh.niall.miya.services.MiyaCommand;
 
-public class StatsCommand implements CommandExecutor {
+public class StatsCommand extends MiyaCommand {
 
     private final static String statsMessage = String.join(
             System.getProperty("line.separator"),
@@ -22,6 +20,10 @@ public class StatsCommand implements CommandExecutor {
             "They have died %s times",
             "They have killed %s players"
     );
+
+    public StatsCommand() {
+        commandName = "stats";
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

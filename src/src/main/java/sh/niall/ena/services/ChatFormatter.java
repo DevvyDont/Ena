@@ -3,22 +3,21 @@ package sh.niall.ena.services;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.persistence.PersistentDataContainer;
-import sh.niall.ena.Ena;
 import sh.niall.ena.chat.ChatColour;
 import sh.niall.ena.utils.ColourUtils;
 import sh.niall.ena.utils.StorageUtils;
+import sh.niall.miya.services.MiyaListener;
 
-public class ChatFormatter implements Listener {
+public class ChatFormatter extends MiyaListener {
 
-    private final Chat vaultChat;
-    private final String msgFormat = "%1$s&f: %2$s";
+    private Chat vaultChat;
 
-    public ChatFormatter() {
-        this.vaultChat = Ena.getPlugin().getServer().getServicesManager().load(Chat.class);
+    @Override
+    public void onRegister() {
+        this.vaultChat = getServer().getServicesManager().load(Chat.class);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -33,6 +32,6 @@ public class ChatFormatter implements Listener {
         PersistentDataContainer playerData = event.getPlayer().getPersistentDataContainer();
         String prefix = vaultChat.getPlayerPrefix(event.getPlayer());
         String nameColour = StorageUtils.getString(playerData, StorageUtils.playerChatColour);
-        event.setFormat(ColourUtils.formatString(prefix + nameColour + msgFormat));
+        event.setFormat(ColourUtils.formatString(prefix + nameColour + "%1$s&f: %2$s"));
     }
 }

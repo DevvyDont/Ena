@@ -2,13 +2,17 @@ package sh.niall.ena.commands.spawn;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import sh.niall.miya.services.MiyaCommand;
 
-public class SpawnCommand implements CommandExecutor {
+public class SpawnCommand extends MiyaCommand {
 
     private static final String tpMessage = "Teleported to Spawn from:\nX: %s\nY: %s\nZ: %s";
+
+    public SpawnCommand() {
+        commandName = "spawn";
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

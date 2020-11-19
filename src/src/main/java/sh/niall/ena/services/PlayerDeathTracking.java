@@ -2,12 +2,12 @@ package sh.niall.ena.services;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import sh.niall.ena.utils.StorageUtils;
+import sh.niall.miya.services.MiyaListener;
 
-public class PlayerDeathTracking implements Listener {
+public class PlayerDeathTracking extends MiyaListener {
 
     @EventHandler
     public void OnPlayerDeath(PlayerDeathEvent event) {
