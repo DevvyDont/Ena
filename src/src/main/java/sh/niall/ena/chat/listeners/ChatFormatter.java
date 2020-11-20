@@ -32,5 +32,6 @@ public class ChatFormatter extends MiyaListener {
     public void OnPlayerMessage(AsyncPlayerChatEvent event) {
         String prefix = vaultChat.getPlayerPrefix(event.getPlayer());
         event.setFormat(ColourUtils.formatString(prefix + PlayerUtils.getName(event.getPlayer()) + ": %2$s"));
+        event.setMessage(ColourUtils.formatString(event.getMessage()));
     }
 }
