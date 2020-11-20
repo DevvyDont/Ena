@@ -32,6 +32,11 @@ public class TeleportAcceptCommand extends MiyaCommand implements Listener, TabC
         if (!(sender instanceof Player))
             return false;
 
+        if (args.length == 0) {
+            sender.sendMessage(ChatColor.RED + "Please provide someone to teleport to!");
+            return true;
+        }
+
         Player player = (Player) sender;
         switch (args[0].toLowerCase()) {
             case "accept":
