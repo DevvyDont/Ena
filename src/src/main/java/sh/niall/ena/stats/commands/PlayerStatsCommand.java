@@ -1,21 +1,23 @@
 package sh.niall.ena.stats.commands;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
-import sh.niall.ena.utils.ColourUtils;
-import sh.niall.ena.utils.HumanUtils;
-import sh.niall.ena.utils.StorageUtils;
-import sh.niall.ena.utils.TimeUtils;
+import sh.niall.ena.utils.*;
 import sh.niall.miya.services.MiyaCommand;
 
-public class PlayerStatsCommand extends MiyaCommand {
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class PlayerStatsCommand extends MiyaCommand implements TabCompleter {
 
     private final static String statsMessage = String.join(
-            System.getProperty("line.separator"),
-            "Stats for player %s%s&f:",
-            "They are currently %s&f.",
+            "\n",
+            "Stats for player %s:",
             "They have played for %s.",
             "They have died %s times",
             "They have killed %s players"
@@ -27,21 +29,28 @@ public class PlayerStatsCommand extends MiyaCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // TODO: Allow a username argument to search instead.
-        Player player = (Player) sender;
-        PersistentDataContainer playerData = player.getPersistentDataContainer();
+        Player player = args.length > 0 ? Bukkit.getPlayer(args[0]) : (Player) sender;
+        if (player == null) {
+            sender.sendMessage("I don't know a user with the name " + ChatColor.RED + args[0]);
+            return true;
+        }
 
-        String nameColour = StorageUtils.getString(playerData, StorageUtils.playerChatColour);
-        String name = player.getDisplayName();
-        String status = player.isOnline() ? "&aonline" : "&4offline";
+        PersistentDataContainer playerData = player.getPersistentDataContainer();
+        String name = PlayerUtils.getName(player);
         String duration = HumanUtils.secondsToHumanReadable(TimeUtils.calculatePlayedDuration(playerData));
         int deathCount = StorageUtils.getInt(playerData, StorageUtils.playerDeathCount);
         int killCount = StorageUtils.getInt(playerData, StorageUtils.playerKillCount);
 
-        String toSend = String.format(statsMessage, nameColour, name, status, duration, deathCount, killCount);
+        String toSend = String.format(statsMessage, name, duration, deathCount, killCount);
         sender.sendMessage(ColourUtils.formatString(toSend));
         return true;
     }
 
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        String argLower = args[0].toLowerCase();
 
+        return Bukkit.getOnlinePlayers().stream().filter(p -> p.getName().toLowerCase().startsWith(argLower))
+                .limit(5).map(Player::getDisplayName).collect(Collectors.toList());
+    }
 }
