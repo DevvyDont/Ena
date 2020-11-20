@@ -21,3 +21,8 @@ commands:
     description: Displays stats about the target player.
     usage: /<command>
     permission: ena.player.stats
+  teleport:
+    description: Send a teleport request to someone!
+    usage: /<command> < player-name | cancel | accept | deny >
+    permission: ena.teleport
+    aliases: [tp, tpa]
