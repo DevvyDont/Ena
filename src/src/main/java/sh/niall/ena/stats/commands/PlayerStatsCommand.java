@@ -1,4 +1,4 @@
-package sh.niall.ena.commands.player;
+package sh.niall.ena.stats.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,7 +10,7 @@ import sh.niall.ena.utils.StorageUtils;
 import sh.niall.ena.utils.TimeUtils;
 import sh.niall.miya.services.MiyaCommand;
 
-public class StatsCommand extends MiyaCommand {
+public class PlayerStatsCommand extends MiyaCommand {
 
     private final static String statsMessage = String.join(
             System.getProperty("line.separator"),
@@ -21,7 +21,7 @@ public class StatsCommand extends MiyaCommand {
             "They have killed %s players"
     );
 
-    public StatsCommand() {
+    public PlayerStatsCommand() {
         commandName = "stats";
     }
 

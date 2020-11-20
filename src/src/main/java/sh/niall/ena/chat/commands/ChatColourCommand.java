@@ -1,4 +1,4 @@
-package sh.niall.ena.commands.chat;
+package sh.niall.ena.chat.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
-import sh.niall.ena.chat.ChatColour;
+import sh.niall.ena.chat.enums.ChatColour;
 import sh.niall.ena.utils.ColourUtils;
 import sh.niall.ena.utils.StorageUtils;
 import sh.niall.miya.services.MiyaCommand;

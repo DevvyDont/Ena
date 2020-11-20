@@ -1,4 +1,4 @@
-package sh.niall.ena.services;
+package sh.niall.ena.stats.listeners;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;

@@ -1,4 +1,4 @@
-package sh.niall.ena.commands.spawn;
+package sh.niall.ena.spawn.commands;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;

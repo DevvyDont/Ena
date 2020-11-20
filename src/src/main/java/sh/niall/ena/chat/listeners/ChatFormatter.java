@@ -1,4 +1,4 @@
-package sh.niall.ena.services;
+package sh.niall.ena.chat.listeners;
 
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.event.EventHandler;
@@ -6,7 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.persistence.PersistentDataContainer;
-import sh.niall.ena.chat.ChatColour;
+import sh.niall.ena.chat.enums.ChatColour;
 import sh.niall.ena.utils.ColourUtils;
 import sh.niall.ena.utils.StorageUtils;
 import sh.niall.miya.services.MiyaListener;

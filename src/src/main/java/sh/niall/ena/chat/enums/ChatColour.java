@@ -1,4 +1,4 @@
-package sh.niall.ena.chat;
+package sh.niall.ena.chat.enums;
 
 import org.bukkit.Material;
 

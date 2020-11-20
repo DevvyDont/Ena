@@ -1,4 +1,4 @@
-package sh.niall.ena.services;
+package sh.niall.ena.stats.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;

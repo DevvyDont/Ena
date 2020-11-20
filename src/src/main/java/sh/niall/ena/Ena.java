@@ -1,11 +1,11 @@
 package sh.niall.ena;
 
-import sh.niall.ena.commands.chat.ChatColourCommand;
-import sh.niall.ena.commands.player.StatsCommand;
-import sh.niall.ena.commands.spawn.SpawnCommand;
-import sh.niall.ena.services.ChatFormatter;
-import sh.niall.ena.services.PlayedDurationTracking;
-import sh.niall.ena.services.PlayerDeathTracking;
+import sh.niall.ena.chat.commands.ChatColourCommand;
+import sh.niall.ena.stats.commands.PlayerStatsCommand;
+import sh.niall.ena.spawn.commands.SpawnCommand;
+import sh.niall.ena.chat.listeners.ChatFormatter;
+import sh.niall.ena.stats.listeners.PlayedDurationTracking;
+import sh.niall.ena.stats.listeners.PlayerDeathTracking;
 import sh.niall.miya.MiyaPlugin;
 
 public final class Ena extends MiyaPlugin {
@@ -22,7 +22,7 @@ public final class Ena extends MiyaPlugin {
 
         // Commands
         addService(new ChatColourCommand());
-        addService(new StatsCommand());
+        addService(new PlayerStatsCommand());
         addService(new SpawnCommand());
     }
 
