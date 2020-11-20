@@ -27,4 +27,9 @@ public final class Ena extends MiyaPlugin {
         addService(new TeleportAcceptCommand());
         addService(new NickNameCommand());
     }
+
+    @Override
+    public void onDisable() {
+        getFromStorage(PlayedDurationTracking.class).OnShutdown();
+    }
 }

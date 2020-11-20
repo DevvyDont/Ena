@@ -2,6 +2,7 @@ package sh.niall.ena.stats.listeners;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import sh.niall.ena.utils.StorageUtils;
@@ -9,7 +10,7 @@ import sh.niall.miya.services.MiyaListener;
 
 public class PlayerDeathTracking extends MiyaListener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void OnPlayerDeath(PlayerDeathEvent event) {
         addOneToTotal(event.getEntity().getPersistentDataContainer(), StorageUtils.playerDeathCount);
 

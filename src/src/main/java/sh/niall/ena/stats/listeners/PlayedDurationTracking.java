@@ -1,5 +1,7 @@
 package sh.niall.ena.stats.listeners;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -20,7 +22,17 @@ public class PlayedDurationTracking extends MiyaListener {
 
     @EventHandler
     public void OnPlayerLogout(PlayerQuitEvent event) {
-        PersistentDataContainer playerData = event.getPlayer().getPersistentDataContainer();
+        savePlayer(event.getPlayer());
+    }
+
+    public void OnShutdown() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            savePlayer(player);
+        }
+    }
+
+    private void savePlayer(Player player) {
+        PersistentDataContainer playerData = player.getPersistentDataContainer();
         StorageUtils.setLong(playerData, StorageUtils.playerLogoutTs, Instant.now().getEpochSecond());
         StorageUtils.setLong(playerData, StorageUtils.playerTimeSpent, TimeUtils.calculatePlayedDuration(playerData));
         StorageUtils.setLong(playerData, StorageUtils.playerLoginTs, 0);
