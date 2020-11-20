@@ -60,7 +60,7 @@ public class TeleportRequest {
     }
 
     private void send(Player player, String msg) {
-        player.sendMessage(ColourUtils.formatString(msg));
+        PlayerUtils.send(player, msg);
     }
 
     private void createTimeout() {

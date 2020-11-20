@@ -12,9 +12,15 @@ public class StorageUtils {
     public static final NamespacedKey playerTimeSpent = new NamespacedKey(Ena.getPlugin(), "playerTimeSpent");
     public static final NamespacedKey playerLoginTs = new NamespacedKey(Ena.getPlugin(), "playerLoginTs");
     public static final NamespacedKey playerLogoutTs = new NamespacedKey(Ena.getPlugin(), "playerLogoutTs");
+    public static final NamespacedKey playerNickname = new NamespacedKey(Ena.getPlugin(), "playerNickname");
 
     public static String getString(PersistentDataContainer data, NamespacedKey key) {
         return data.get(key, PersistentDataType.STRING);
+    }
+
+    public static String getString(PersistentDataContainer data, NamespacedKey key, String defaultString) {
+        String found = data.get(key, PersistentDataType.STRING);
+        return found == null ? defaultString : found;
     }
 
     public static void setString(PersistentDataContainer data, NamespacedKey key, String toStore) {
@@ -37,5 +43,9 @@ public class StorageUtils {
 
     public static void setInt(PersistentDataContainer data, NamespacedKey key, int toStore) {
         data.set(key, PersistentDataType.INTEGER, toStore);
+    }
+
+    public static void deleteKey(PersistentDataContainer dataContainer, NamespacedKey key) {
+        dataContainer.remove(key);
     }
 }

@@ -22,7 +22,12 @@ commands:
     usage: /<command>
     permission: ena.player.stats
   teleport:
-    description: Send a teleport request to someone!
+    description: Send a teleport request to someone.
     usage: /<command> < player-name | cancel | accept | deny >
     permission: ena.teleport
     aliases: [tp, tpa]
+  nickname:
+    description: Change your nickname.
+    usage: /<command> < new-name | clear >
+    permission: ena.nickname
+    aliases: [nick]

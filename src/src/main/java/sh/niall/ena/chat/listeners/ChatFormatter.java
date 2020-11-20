@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import sh.niall.ena.chat.enums.ChatColour;
 import sh.niall.ena.utils.ColourUtils;
+import sh.niall.ena.utils.PlayerUtils;
 import sh.niall.ena.utils.StorageUtils;
 import sh.niall.miya.services.MiyaListener;
 
@@ -29,9 +30,7 @@ public class ChatFormatter extends MiyaListener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void OnPlayerMessage(AsyncPlayerChatEvent event) {
-        PersistentDataContainer playerData = event.getPlayer().getPersistentDataContainer();
         String prefix = vaultChat.getPlayerPrefix(event.getPlayer());
-        String nameColour = StorageUtils.getString(playerData, StorageUtils.playerChatColour);
-        event.setFormat(ColourUtils.formatString(prefix + nameColour + "%1$s&f: %2$s"));
+        event.setFormat(ColourUtils.formatString(prefix + PlayerUtils.getName(event.getPlayer()) + ": %2$s"));
     }
 }
