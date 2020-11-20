@@ -1,0 +1,39 @@
+on:
+  release:
+    types: [published]
+
+name: Building Ena
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Set gradle perimissions
+        run: chmod +x gradlew
+
+      - name: Create Shadow Jar
+        run: ./gradlew -b "src/build.gradle" shadowJar
+
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.2.2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload Release Asset
+        uses: gfreezy/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: ./build/libs/Misty-1.0-all.jar
+          asset_name: Ena-${{ steps.get_release.outputs.tag_name }}.jar
+          asset_content_type: application/java-archive

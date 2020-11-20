@@ -1,6 +1,5 @@
 package sh.niall.ena;
 
-import org.bukkit.plugin.java.JavaPlugin;
 import sh.niall.ena.commands.chat.ChatColourCommand;
 import sh.niall.ena.commands.player.StatsCommand;
 import sh.niall.ena.commands.spawn.SpawnCommand;

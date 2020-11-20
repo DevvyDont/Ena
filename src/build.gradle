@@ -34,3 +34,9 @@ processResources {
         filter ReplaceTokens, tokens: [version: version]
     }
 }
+
+shadowJar {
+    archiveBaseName.set('Ena')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
