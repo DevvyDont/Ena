@@ -43,6 +43,5 @@ public class PlayedDurationTracking extends MiyaListener {
         StorageUtils.setLong(playerData, StorageUtils.playerLogoutTs, Instant.now().getEpochSecond());
         StorageUtils.setLong(playerData, StorageUtils.playerTimeSpent, TimeUtils.calculatePlayedDuration(playerData));
         StorageUtils.setLong(playerData, StorageUtils.playerLoginTs, 0);
-        System.out.println("yes");
     }
 }
